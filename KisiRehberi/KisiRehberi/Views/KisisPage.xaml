@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KisiRehberi.Views.KisisPage" 
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Yeni" Clicked="AddItem_Clicked" Order="Primary">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="plus.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView x:Name="_ScrollView"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical" >
+            <StackLayout x:Name="_name1" VerticalOptions="Fill" HorizontalOptions="Fill" >
+                <ListView x:Name="ItemsListView" 
+                             ItemsSource="{Binding KisiObsvList}"
+                             VerticalOptions="FillAndExpand"
+                             HasUnevenRows="true"
+                             RefreshCommand="{Binding LoadItemsCommand}"
+                             IsPullToRefreshEnabled="true"
+                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                             CachingStrategy="RecycleElement"
+                             ItemSelected="OnItemSelected"
+                             SeparatorColor="Blue"
+                          >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Ad}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="Small"
+                                           />
+                                    <Label Text="{Binding Soyad}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                            FontSize="Small"
+                                            />
+                                    <Label Text="{Binding TCKimlikNo}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="Small"
+                                            />
+                                    <Label Text="{Binding BabaAd}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="Small"
+                                            />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

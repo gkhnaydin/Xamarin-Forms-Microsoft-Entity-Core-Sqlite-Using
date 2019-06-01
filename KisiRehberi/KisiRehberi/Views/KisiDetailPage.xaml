@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:KisiRehberi"
+             x:Class="KisiRehberi.Views.KisiDetailPage"
+             Title="{Binding Title}" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:Converter x:Key="byteToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sil" Clicked="ToolbarItem_Clicked"  Order="Primary" >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="delete.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Frame IsVisible="True"  HasShadow="True" >
+        <StackLayout Spacing="10" Padding="10">
+            <Label Text="Ad:" FontSize="Medium"  />
+            <Label Text="{Binding Kisi.Ad}" FontSize="Small"  />
+            <Label Text="Soyad Ad:" FontSize="Medium"  />
+            <Label Text="{Binding Kisi.Soyad}" FontSize="Small" />
+            <Label Text="T.C Kimlik No:" FontSize="Medium" />
+            <Label Text="{Binding Kisi.TCKimlikNo}" FontSize="Small" />
+            <Label Text="Baba Ad:" FontSize="Medium" />
+            <Label Text="{Binding Kisi.BabaAd}" FontSize="Small" />
+            <Label Text="Anne Ad:" FontSize="Medium" />
+            <Label Text="{Binding Kisi.AnneAd}" FontSize="Small" />
+            <Label Text="Not:" FontSize="Medium" />
+            <Label Text="{Binding Kisi.Not}" FontSize="Small" />
+            <Image x:Name="image" Aspect="AspectFit" Source="{Binding Kisi.ImageArray,  Converter={StaticResource byteToImageConverter}}" >
+            </Image>
+        </StackLayout>
+    </Frame>
+</ContentPage>

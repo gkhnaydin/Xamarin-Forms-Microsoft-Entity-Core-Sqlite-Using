@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              x:Class="KisiRehberi.Views.YeniKisiPage"
+		     Title="Yeni Kişi Ekle" 
+              >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Kaydet" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="15" Padding="15">
+                <Label Text="Ad" FontSize="Medium"  />
+                <Entry x:Name="_EntryAd" FontSize="Small"  Keyboard="Text" />
+                <Label Text="SoyAd"  FontSize="Medium"   />
+                <Entry x:Name="_EntrySoyad" FontSize="Small"   Keyboard="Text" />
+                <Label Text="T.C Kimlik No"  FontSize="Medium"  />
+                <Entry x:Name="_EntryTCNo" FontSize="Small"   Keyboard="Numeric" />
+                <Label Text="Baba Ad" FontSize="Medium"  />
+                <Entry x:Name="_EntryBabaAd" FontSize="Small"  Keyboard="Text" />
+                <Label Text="Anne Ad" FontSize="Medium"  />
+                <Entry x:Name="_EntryAnneAd" FontSize="Small"  Keyboard="Text" />
+                <Label Text="Not" FontSize="Medium"  />
+                <Entry x:Name="_EntryNot" FontSize="Small"  Keyboard="Text" />
+                <Label Text="Fotoğraf"  FontSize="Medium"   />
+                <Button Text="Fotoğraf Çek"    
+                    x:Name="takePhoto"    
+                    BackgroundColor="Fuchsia"    
+                    Clicked="TakeAPhotoButton_OnClicked">
+                </Button>
+                <Button Text="Pick a Photo"    
+                    x:Name="pickPhoto"    
+                    BackgroundColor="Blue"    
+                    Clicked="PickAPhotoButton_OnClicked">
+                </Button>
+                <Image x:Name="image" Aspect="AspectFit"  BackgroundColor="WhiteSmoke">
+                </Image>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
